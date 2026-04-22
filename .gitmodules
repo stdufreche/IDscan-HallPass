@@ -4,3 +4,6 @@
 [submodule "lib/Chrome.ahk"]
 	path = lib/Chrome.ahk
 	url = https://github.com/G33kDude/Chrome.ahk
+[submodule "lib/Serial-Comm.ahk"]
+	path = lib/Serial-Comm.ahk
+	url = https://github.com/stdufreche/Serial-Comm.ahk
