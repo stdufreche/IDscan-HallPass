@@ -1,0 +1,6 @@
+[submodule "lib/Navigate360-API.ahk"]
+	path = lib/Navigate360-API.ahk
+	url = https://github.com/stdufreche/Navigate360-API.ahk
+[submodule "lib/Chrome.ahk"]
+	path = lib/Chrome.ahk
+	url = https://github.com/G33kDude/Chrome.ahk
