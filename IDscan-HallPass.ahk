@@ -1,41 +1,11 @@
 ;################### IDscan-HallPass.ahk ###################
-; 09/30/25
-; A multi-tool solution for logging student IDs into Google Sheets.
-; 0.79 Initial commit to git
-; 0.78 Updates to OSD
-; v.77 Changed timing for pass return
-; v.76 Recompile with CSL v2
-; v.75 Add OSD for Pass
-; v.74 Fix window handle drag and positioning
-; v.73 Optimize browser layout
-; v.72 Add checks for running non-debugger chrome
-; v.71 Remove dual-scanner functionality, restore flex behavior.
-; v.70 Fold in BarcodeAttendance-0.21.ahk
-; v.69 Change over to PBIS Hall Pass
-; v.68 
-; v.67 Added color background change
-; v.65 Bugfix for serial port and SysRst
-; v.64 Bugfix for SysRst
-; v.63 Added GUI movement option 
-; v.62 Added infraction tag and update for new EHP Kiosk site
-; v.61 Bug testing
-; v.60 Branch. Add keyboard capture without serial connection
-; v.53 Switch back to Chrome.ahk and update EHP site
-; v.51 Additional Error Handling
-; v.50 Switch to Edge.ahk and Edge Browser
-; v.48 Error-catching code and tighter chrome integration
-; v.46 Fixes for Kiosk mode bugs
-; v.45 Added Alt-Teacher Log capability
-; v.44 Improved device checkout capability
-; v.43 Tighter Chrome.ahk integration with browser and Device Checkout
-; v.42 Added OSD GUI for feedback
-; v.41 Updates to EHP website code
-; v.40 Initial Work on EHP website integration
-static version := "0.79.0-git"
+
+Global version := "1.0.1"
+
 #SingleInstance Force
 #NoEnv
-#Include ..\AHK-Lib\Chrome.ahk\Chrome.ahk ;https://github.com/G33kDude/Chrome.ahk.git
-#Include ..\AHK-Lib\Navigate360-API.ahk\Navigate360-API.ahk
+#Include lib\Chrome.ahk\Chrome.ahk ;https://github.com/G33kDude/Chrome.ahk.git
+#Include lib\Navigate360-API.ahk\Navigate360-API.ahk
 #Include ChromeScan.ahk
 #Include ProcessBarcodeScan.ahk
 #Include SerialComm.ahk
