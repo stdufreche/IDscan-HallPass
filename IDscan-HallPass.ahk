@@ -6,9 +6,10 @@ Global version := "1.0.1"
 #NoEnv
 #Include lib\Chrome.ahk\Chrome.ahk ;https://github.com/G33kDude/Chrome.ahk.git
 #Include lib\Navigate360-API.ahk\Navigate360-API.ahk
+#Include lib\Serial-Comm.ahk\Serial-Comm.ahk
 #Include ChromeScan.ahk
 #Include ProcessBarcodeScan.ahk
-#Include SerialComm.ahk
+
 SetWorkingDir %A_ScriptDir%
 SetBatchLines -1
 
