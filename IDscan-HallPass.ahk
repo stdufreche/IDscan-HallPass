@@ -115,16 +115,25 @@ global CustomDest:=False
 ;########################################################################
 {
 try {
-    oHttp := ComObjCreate("WinHttp.Winhttprequest.5.1")
-    httpBase=https://script.google.com/macros/s/AKfycbwlAPQz0HHwVU8qv_xnlVgEcEsdEkVPz-KkdIQ9Q9UStmaIgn-_C8kNvIX9BLtlKlmWVg/exec
-    httpsend=%httpBase%?Name=IDscan&Version=%version%
-    ;MsgBox %httpsend%
-    oHttp.open("GET",httpsend)
-    oHttp.send()
-    IF (oHttp.responseText!="1") 
-    {
-        UpdateURL:=oHttp.responseText
-        ;MsgBox New version is available. Please download at %msgLink%
+        UpdateURL:=False
+
+        oHttp := ComObjCreate("WinHttp.Winhttprequest.5.1")
+        httpsend=https://raw.githubusercontent.com/stdufreche/IDscan-HallPass/refs/heads/main/version
+        oHttp.open("GET",httpsend)
+        oHttp.send()
+
+        currentVersion := StrSplit(oHttp.responseText, ".")
+        localVersion := StrSplit(version, ".")
+
+        ;Check Major/Minor/Patch version numbers
+        Loop, 3
+            {
+                IF (currentVersion[A_INDEX]>localVersion[A_INDEX]) {
+                    UpdateURL=https://github.com/stdufreche/IDscan-HallPass/releases
+                    Break
+                } 
+            }
+
     }
 } Catch e
 {
