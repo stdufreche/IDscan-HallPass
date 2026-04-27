@@ -1,6 +1,6 @@
 ;################### IDscan-HallPass.ahk ###################
 
-Global version := "1.0.1"
+Global version := "1.0.2"
 
 #SingleInstance Force
 #NoEnv
@@ -121,20 +121,22 @@ try {
         httpsend=https://raw.githubusercontent.com/stdufreche/IDscan-HallPass/refs/heads/main/version
         oHttp.open("GET",httpsend)
         oHttp.send()
-
         currentVersion := StrSplit(oHttp.responseText, ".")
         localVersion := StrSplit(version, ".")
-
+        MsgBox %currentVersion[1]%
         ;Check Major/Minor/Patch version numbers
         Loop, 3
             {
+                cV := currentVersion[A_INDEX]
+                lV := localVersion[A_INDEX]
+                MsgBox %cV% %lV%
                 IF (currentVersion[A_INDEX]>localVersion[A_INDEX]) {
                     UpdateURL=https://github.com/stdufreche/IDscan-HallPass/releases
                     Break
                 } 
             }
 
-    }
+    
 } Catch e
 {
     MsgBox Error on Version Check: %e%
@@ -158,7 +160,7 @@ Gui Font
 Gui Font, cBlack
 Gui Add, Text, hWndhTxt x1024 y0 w2 h768 +0x200
 Gui Font, s12 Bold cGreen
-If (UpdateURL!="")
+If (UpdateURL!=False)
 {
     Gui Font, s9 cGreen
     Gui Add, Link, x1044 y13 w146 h20 +0x1 +Center, <a href="%UpdateURL%">Download New Version</a>
