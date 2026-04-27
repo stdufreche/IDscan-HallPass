@@ -123,13 +123,9 @@ try {
         oHttp.send()
         currentVersion := StrSplit(oHttp.responseText, ".")
         localVersion := StrSplit(version, ".")
-        MsgBox %currentVersion[1]%
         ;Check Major/Minor/Patch version numbers
         Loop, 3
             {
-                cV := currentVersion[A_INDEX]
-                lV := localVersion[A_INDEX]
-                MsgBox %cV% %lV%
                 IF (currentVersion[A_INDEX]>localVersion[A_INDEX]) {
                     UpdateURL=https://github.com/stdufreche/IDscan-HallPass/releases
                     Break
