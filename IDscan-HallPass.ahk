@@ -1,6 +1,6 @@
 ;################### IDscan-HallPass.ahk ###################
 
-Global version := "1.0.2"
+Global version := "1.0.3"
 
 #SingleInstance Force
 #NoEnv
@@ -244,7 +244,6 @@ SetTimer TimeCheck, 1000
 ;########################################################################
 If (DisplayMonitor != 0)
 {
-    global CustomColor := "B7E1CD"
     SysGet, Mon, Monitor, %DisplayMonitor% ; 1 is the primairy monitor, 2 the secondairy etc. 
     bckgrdX := "W" Abs(MonRight - MonLeft)
     bckgrdY := "H" Abs(MonTop - MonBottom)
@@ -253,29 +252,13 @@ If (DisplayMonitor != 0)
     textYpos := "Y" (Abs(MonTop - MonBottom) - 300)
     ;MsgBox, Left: %MonLeft% -- Top: %MonTop% -- Right: %MonRight% -- Bottom %MonBottom% -- bckgrdX: %bckgrdX% bckgrdY: %bckgrdY% textYpos: %textYpos%.
 
-    ;GuiOSD()
-    ;Construct main GUI
-    ; Can be any RGB color (it will be made transparent below).
     Gui, OSD:New, +LastFound +AlwaysOnTop +ToolWindow -Caption -MinimizeBox -SysMenu ;+Resize  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
     Gui, Color, cGreen ;%CustomColor%
     Gui, Font, s64  ; Set a large font size (32-point).
-    ;Gui, Add, Text, +Center %bckgrdX% %LargeGUIOffset% cLime
-    ;Gui, Add, Text, +Center %bckgrdX% vClock cGreen,%A_Hour%:%A_Min%:%A_Sec%
-    Gui, Add, Text, %bckgrdX% vVar1 cLime,_________________________________________
+     Gui, Add, Text, %bckgrdX% vVar1 cLime,_________________________________________
     Gui, Add, Text, %bckgrdX% vVar2 cLime,_________________________________________
-    ;Gui, Add, Text, %bckgrdX% vVar3 cLime,_________________________________________
-    ;Gui, Add, Text, +Center %bckgrdX% vVar4 cGreen,_________________________________________
-    ; Make all pixels of this color transparent and make the text itself translucent (150):
-    ;WinSet, TransColor, cGreen 250 ;%CustomColor% 250
-    ;WinSet, Transparent, 150
-
-    ;SetTimer, UpdateOSD, 200
-    ;Gosub, UpdateOSD  ; Make the first update immediate rather than waiting for the timer.
-    ;If LargeGUIOffset=="y0"
+    WinSet, TransColor, cGreen 250 ; Make all pixels of this color transparent
     Gui, Show, NoActivate W1000 H300 %Xpos% %Ypos% ; NoActivate avoids deactivating the currently active window.
-    ;Else
-        ;Gui, Show, NoActivate xCenter %LargeGUIOffset% %bckgrdX% %bckgrdY% ; NoActivate avoids deactivating the currently active window.
-    
     GuiControl, OSD:, MoveDraw
     Sleep 1000
     GuiControl, OSD:, Hide
@@ -308,10 +291,7 @@ If EHPinterface {
     ;Gui Main:Show, w1200 h768, ID Scan & Hall Pass
     
     global BoundCallback := Func("Callback")
-    Sleep 500
-    ;WinActivate, ID Scan & Hall Pass
-    ;ControlSend,,{F11},ahk_id %TargetHwnd%
-    Sleep 1500
+    Sleep 2000
     ; Enable console events and inject the JS payload
     PageInst := ChromeAttach()
     PageInst.WaitForLoad()
