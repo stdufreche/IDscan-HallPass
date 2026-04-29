@@ -1,6 +1,6 @@
 ;################### IDscan-HallPass.ahk ###################
 
-Global version := "1.0.2"
+Global version := "1.0.3"
 
 #SingleInstance Force
 #NoEnv
@@ -266,7 +266,7 @@ If (DisplayMonitor != 0)
     ;Gui, Add, Text, %bckgrdX% vVar3 cLime,_________________________________________
     ;Gui, Add, Text, +Center %bckgrdX% vVar4 cGreen,_________________________________________
     ; Make all pixels of this color transparent and make the text itself translucent (150):
-    ;WinSet, TransColor, cGreen 250 ;%CustomColor% 250
+    WinSet, TransColor, cGreen 250 ;%CustomColor% 250
     ;WinSet, Transparent, 150
 
     ;SetTimer, UpdateOSD, 200
